@@ -16,10 +16,10 @@ Public Class frmLista
                     Case "Clientes"
                         objClientes.cargarListView(lstDatos)
                     Case Else
-                        Throw New Exception("No se pudo validar el modo. CONTACTE A Anthony")
+                        Throw New Exception("No se pudo validar el modo.")
                 End Select
             Else
-                Throw New Exception("No se pudo validar el modo. CONTACTE A Anthony")
+                Throw New Exception("No se pudo validar el modo.")
             End If
         Catch ex As Exception
             Throw ex
