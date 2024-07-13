@@ -36,6 +36,10 @@ Public Class frmLista
                     Case "Clientes"
                         Dim frm As New frmCliente
                         frm.ShowDialog()
+                    Case "Categorias"
+                    Case "Ingredientes"
+                    Case "Proveedores"
+                    Case "Usuarios"
                 End Select
                 cargarLista()
             End If
@@ -62,6 +66,10 @@ Public Class frmLista
                         Dim frm As New frmCliente
                         frm.pID = vID
                         frm.ShowDialog()
+                    Case "Categorias"
+                    Case "Ingredientes"
+                    Case "Proveedores"
+                    Case "Usuarios"
                 End Select
                 cargarLista()
             End If
@@ -86,6 +94,10 @@ Public Class frmLista
                             objProductos.Eliminar(vID)
                         Case "Clientes"
                             objClientes.Eliminar(vID)
+                        Case "Categorias"
+                        Case "Ingredientes"
+                        Case "Proveedores"
+                        Case "Usuarios"
                     End Select
                     MsgBox.Info("Se ha eliminado el registro.")
                     cargarLista()
@@ -110,6 +122,10 @@ Public Class frmLista
                     Case "Clientes"
                         Dim obj As Cliente = objClientes.getCliente(Me.lstDatos.SelectedItems(0).SubItems(0).Text.ToString)
                         MsgBox.Info(obj.Info)
+                    Case "Categorias"
+                    Case "Ingredientes"
+                    Case "Proveedores"
+                    Case "Usuarios"
                 End Select
             End If
 

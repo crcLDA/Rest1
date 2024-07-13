@@ -74,10 +74,10 @@
                 Dim obj As New Producto(Integer.Parse(txtId.Text.Trim), txtNombre.Text.Trim, txtDescripcion.Text.Trim, Integer.Parse(txtPrecio.Text), cboCategoria.SelectedValue, chkActivo.Checked)
                 If pID = 0 Then
                     objNegocios.Agregar(obj)
-                    MsgBox.Info("Se ha agregado el cliente")
+                    MsgBox.Info("Se ha agregado el producto")
                 Else
                     objNegocios.Modificar(obj)
-                    MsgBox.Info("Se ha modificado el cliente")
+                    MsgBox.Info("Se ha modificado el producto")
                 End If
                 Me.Close()
             End If

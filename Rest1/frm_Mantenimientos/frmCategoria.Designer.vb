@@ -40,9 +40,10 @@ Partial Class frmCategoria
         ' 
         ' txtId
         ' 
+        txtId.Enabled = False
         txtId.Location = New Point(39, 6)
         txtId.Name = "txtId"
-        txtId.Size = New Size(69, 23)
+        txtId.Size = New Size(45, 23)
         txtId.TabIndex = 15
         txtId.Text = "0"
         ' 
