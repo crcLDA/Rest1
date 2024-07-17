@@ -5,6 +5,7 @@ Public Class frmLista
     Dim objUtil As Utilitarios
     Dim objProductos As Productos
     Dim objClientes As Clientes
+    Dim objIngredientes As Ingredientes
 
     Private Sub cargarLista()
         Try
@@ -15,6 +16,11 @@ Public Class frmLista
                         objProductos.cargarListView(lstDatos)
                     Case "Clientes"
                         objClientes.cargarListView(lstDatos)
+                    Case "Categorias"
+                    Case "Ingredientes"
+                        objIngredientes.cargarListView(lstDatos)
+                    Case "Proveedores"
+                    Case "Usuarios"
                     Case Else
                         Throw New Exception("No se pudo validar el modo.")
                 End Select
@@ -38,6 +44,8 @@ Public Class frmLista
                         frm.ShowDialog()
                     Case "Categorias"
                     Case "Ingredientes"
+                        Dim frm As New frmIngredientes
+                        frm.ShowDialog()
                     Case "Proveedores"
                     Case "Usuarios"
                 End Select
@@ -68,6 +76,9 @@ Public Class frmLista
                         frm.ShowDialog()
                     Case "Categorias"
                     Case "Ingredientes"
+                        Dim frm As New frmIngredientes
+                        frm.pID = vID
+                        frm.ShowDialog()
                     Case "Proveedores"
                     Case "Usuarios"
                 End Select
@@ -96,6 +107,7 @@ Public Class frmLista
                             objClientes.Eliminar(vID)
                         Case "Categorias"
                         Case "Ingredientes"
+                            objIngredientes.Eliminar(vID)
                         Case "Proveedores"
                         Case "Usuarios"
                     End Select
@@ -124,6 +136,8 @@ Public Class frmLista
                         MsgBox.Info(obj.Info)
                     Case "Categorias"
                     Case "Ingredientes"
+                        Dim obj As Ingrediente = objIngredientes.getIngrediente(Me.lstDatos.SelectedItems(0).SubItems(0).Text.ToString)
+                        MsgBox.Info(obj.Info)
                     Case "Proveedores"
                     Case "Usuarios"
                 End Select
@@ -140,7 +154,7 @@ Public Class frmLista
             objUtil = New Utilitarios
             objProductos = New Productos
             objClientes = New Clientes
-
+            objIngredientes = New Ingredientes
             cargarLista()
         Catch ex As Exception
             MsgBox.Error(ex)

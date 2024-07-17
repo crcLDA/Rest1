@@ -55,9 +55,9 @@ Partial Class frmIngredientes
         ' 
         ' txtExistencias
         ' 
-        txtExistencias.Location = New Point(73, 69)
+        txtExistencias.Location = New Point(85, 69)
         txtExistencias.Name = "txtExistencias"
-        txtExistencias.Size = New Size(117, 23)
+        txtExistencias.Size = New Size(84, 23)
         txtExistencias.TabIndex = 26
         ' 
         ' txtNombre
@@ -80,9 +80,9 @@ Partial Class frmIngredientes
         Label3.AutoSize = True
         Label3.Location = New Point(12, 72)
         Label3.Name = "Label3"
-        Label3.Size = New Size(55, 15)
+        Label3.Size = New Size(67, 15)
         Label3.TabIndex = 23
-        Label3.Text = "Teléfono:"
+        Label3.Text = "Existencias:"
         ' 
         ' Label2
         ' 

@@ -111,6 +111,8 @@ Public Class ProductoOrdenes
             Dim documents As New List(Of BsonDocument)()
             Dim vNumDetalle As Integer = getNextDetalleID()
 
+            rebajarProducto(pDetalles)
+
             For Each detalle As DetalleOrden In pDetalles
                 Dim document As New BsonDocument()
                 document.Add("id_detalle", vNumDetalle)
@@ -184,7 +186,6 @@ Public Class ProductoOrdenes
         End Try
     End Function
 
-
     Public Sub GetProductosByOrden(pFiltro As Long, pLST As ListView)
         Try
             pLST.Items.Clear()
@@ -217,7 +218,6 @@ Public Class ProductoOrdenes
         End Try
     End Sub
 
-
     Public Sub pagarDetalles(vFactura As Long, vDetalles As List(Of Integer))
         Try
             Dim collection As IMongoCollection(Of BsonDocument) = objDB.GetCollection("Detalles")
@@ -238,5 +238,116 @@ Public Class ProductoOrdenes
         End Try
     End Sub
 
+    Public Function validaDisponibilidad(idProductos As List(Of Integer)) As Boolean
+        Try
+            Dim objConversiones As New Conversiones
+            Dim objIngredientes As New Ingredientes
+            Dim objProductos As New Productos
+            Dim vListaConversiones As New List(Of Conversion)
+            Dim vListaIngredientes As New List(Of Ingrediente)
+            Dim vListaProductos As New List(Of Producto)
+            vListaIngredientes = objIngredientes.getIngredientes
+            vListaConversiones = objConversiones.getConversiones()
+            vListaProductos = objProductos.getProductos()
 
+            For Each id In idProductos
+                buscaIngredientes(id, getNombreProducto(id, vListaProductos), vListaConversiones, vListaIngredientes)
+            Next
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Function
+
+    Private Function getNombreProducto(idProducto As Integer, listadoProductos As List(Of Producto)) As String
+        Try
+            For Each producto In listadoProductos
+                If producto.IdProducto = idProducto Then
+                    Return producto.Nombre
+                End If
+            Next
+            Return ""
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Function
+
+    Private Sub buscaIngredientes(pId As Integer, pNombre As String, listadoConversion As List(Of Conversion), listadoIngrediente As List(Of Ingrediente))
+        Try
+            Dim vExistencias As Decimal = 0
+
+            For Each conversion In listadoConversion
+                If conversion.IdProducto = pId Then
+                    vExistencias = getExistenciasIngrediente(conversion.IdIngrediente, listadoIngrediente)
+                    If (vExistencias - conversion.Conversion) < 0 Then
+                        Throw New Exception("Las existencias son negativas, no se puede facturar: " + pNombre)
+                    End If
+                End If
+            Next
+
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+
+    Private Function getExistenciasIngrediente(idIngrediente As Integer, listadoIngrediente As List(Of Ingrediente)) As Decimal
+        Try
+            For Each ingrediente In listadoIngrediente
+                If ingrediente.IdIngrediente = idIngrediente Then
+                    Return ingrediente.Existencias
+                End If
+            Next
+            Throw New Exception("No se encontraron existencias para el ingrediente id: " + idIngrediente)
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Function
+
+    Private Sub rebajarProducto(ByVal listaDetalles As List(Of DetalleOrden))
+        Try
+            Dim objConversiones As New Conversiones
+            Dim objIngredientes As New Ingredientes
+            Dim vListaConversiones As New List(Of Conversion)
+            Dim vListaIngredientes As New List(Of Ingrediente)
+            vListaIngredientes = objIngredientes.getIngredientes
+            vListaConversiones = objConversiones.getConversiones()
+
+
+            For Each detalle As DetalleOrden In listaDetalles
+                buscaIngredienteEnLista(detalle.idProducto, vListaConversiones, vListaIngredientes)
+            Next
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+
+    Private Sub buscaIngredienteEnLista(pId As Integer, listadoConversion As List(Of Conversion), listadoIngrediente As List(Of Ingrediente))
+        Try
+            For Each conversion In listadoConversion
+                If conversion.IdProducto = pId Then
+                    rebajarIngrediente(conversion.IdIngrediente, conversion.Conversion, listadoIngrediente)
+
+                End If
+            Next
+
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+
+    Private Sub rebajarIngrediente(pId As Integer, pRebajo As Decimal, listadoIngrediente As List(Of Ingrediente))
+        Try
+            Dim vExistencias As Decimal = 0
+            Dim obj As New Ingredientes
+
+            For Each ingrediente In listadoIngrediente
+                If ingrediente.IdIngrediente = pId Then
+                    ingrediente.Existencias = ingrediente.Existencias - pRebajo
+                    obj.Modificar(ingrediente)
+                End If
+            Next
+
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
 End Class

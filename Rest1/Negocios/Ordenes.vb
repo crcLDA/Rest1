@@ -15,9 +15,9 @@ Public Class Ordenes
     Public Sub EliminarPedido(ID As String)
         Try
             Dim detallesCollection As IMongoCollection(Of BsonDocument) = objDB.GetCollection("Detalles")
-            Dim ordenesCollection As IMongoCollection(Of BsonDocument) = objDB.GetCollection("Ordenes")
+            Dim ordenesCollection As IMongoCollection(Of BsonDocument) = objDB.GetCollection
 
-            Dim filter As FilterDefinition(Of BsonDocument) = Builders(Of BsonDocument).Filter.Eq(Of String)("id_orden", ID)
+            Dim filter As FilterDefinition(Of BsonDocument) = Builders(Of BsonDocument).Filter.Eq(Of Integer)("id_orden", ID)
 
             detallesCollection.DeleteMany(filter)
             ordenesCollection.DeleteOne(filter)

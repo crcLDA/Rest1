@@ -32,6 +32,7 @@ Partial Class frmPrincipal
         IngredientesToolStripMenuItem = New ToolStripMenuItem()
         ProveedoresToolStripMenuItem = New ToolStripMenuItem()
         UsuariosToolStripMenuItem = New ToolStripMenuItem()
+        ConsumosStripMenuItem = New ToolStripMenuItem()
         btnOrdenes = New Button()
         Panel1 = New Panel()
         Panel2 = New Panel()
@@ -42,6 +43,7 @@ Partial Class frmPrincipal
         btnHistorial = New Button()
         btnFacturar = New Button()
         lblUsuario = New Label()
+        ToolStripSeparator1 = New ToolStripSeparator()
         MenuStrip1.SuspendLayout()
         Panel2.SuspendLayout()
         SuspendLayout()
@@ -67,7 +69,7 @@ Partial Class frmPrincipal
         ' MantenimientoToolStripMenuItem
         ' 
         MantenimientoToolStripMenuItem.BackColor = Color.Orange
-        MantenimientoToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {ProductosToolStripMenuItem, ClientesToolStripMenuItem, CategoriasToolStripMenuItem, IngredientesToolStripMenuItem, ProveedoresToolStripMenuItem, UsuariosToolStripMenuItem})
+        MantenimientoToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {ProductosToolStripMenuItem, ClientesToolStripMenuItem, CategoriasToolStripMenuItem, IngredientesToolStripMenuItem, ProveedoresToolStripMenuItem, UsuariosToolStripMenuItem, ToolStripSeparator1, ConsumosStripMenuItem})
         MantenimientoToolStripMenuItem.Image = CType(resources.GetObject("MantenimientoToolStripMenuItem.Image"), Image)
         MantenimientoToolStripMenuItem.Name = "MantenimientoToolStripMenuItem"
         MantenimientoToolStripMenuItem.Size = New Size(117, 20)
@@ -78,7 +80,7 @@ Partial Class frmPrincipal
         ProductosToolStripMenuItem.BackColor = Color.LightCoral
         ProductosToolStripMenuItem.Image = CType(resources.GetObject("ProductosToolStripMenuItem.Image"), Image)
         ProductosToolStripMenuItem.Name = "ProductosToolStripMenuItem"
-        ProductosToolStripMenuItem.Size = New Size(180, 22)
+        ProductosToolStripMenuItem.Size = New Size(139, 22)
         ProductosToolStripMenuItem.Text = "Productos"
         ' 
         ' ClientesToolStripMenuItem
@@ -86,7 +88,7 @@ Partial Class frmPrincipal
         ClientesToolStripMenuItem.BackColor = Color.LightCoral
         ClientesToolStripMenuItem.Image = CType(resources.GetObject("ClientesToolStripMenuItem.Image"), Image)
         ClientesToolStripMenuItem.Name = "ClientesToolStripMenuItem"
-        ClientesToolStripMenuItem.Size = New Size(180, 22)
+        ClientesToolStripMenuItem.Size = New Size(139, 22)
         ClientesToolStripMenuItem.Text = "Clientes"
         ' 
         ' CategoriasToolStripMenuItem
@@ -94,7 +96,7 @@ Partial Class frmPrincipal
         CategoriasToolStripMenuItem.BackColor = Color.LightCoral
         CategoriasToolStripMenuItem.Image = CType(resources.GetObject("CategoriasToolStripMenuItem.Image"), Image)
         CategoriasToolStripMenuItem.Name = "CategoriasToolStripMenuItem"
-        CategoriasToolStripMenuItem.Size = New Size(180, 22)
+        CategoriasToolStripMenuItem.Size = New Size(139, 22)
         CategoriasToolStripMenuItem.Text = "Categorias"
         ' 
         ' IngredientesToolStripMenuItem
@@ -102,7 +104,7 @@ Partial Class frmPrincipal
         IngredientesToolStripMenuItem.BackColor = Color.LightCoral
         IngredientesToolStripMenuItem.Image = CType(resources.GetObject("IngredientesToolStripMenuItem.Image"), Image)
         IngredientesToolStripMenuItem.Name = "IngredientesToolStripMenuItem"
-        IngredientesToolStripMenuItem.Size = New Size(180, 22)
+        IngredientesToolStripMenuItem.Size = New Size(139, 22)
         IngredientesToolStripMenuItem.Text = "Ingredientes"
         ' 
         ' ProveedoresToolStripMenuItem
@@ -110,7 +112,7 @@ Partial Class frmPrincipal
         ProveedoresToolStripMenuItem.BackColor = Color.LightCoral
         ProveedoresToolStripMenuItem.Image = CType(resources.GetObject("ProveedoresToolStripMenuItem.Image"), Image)
         ProveedoresToolStripMenuItem.Name = "ProveedoresToolStripMenuItem"
-        ProveedoresToolStripMenuItem.Size = New Size(180, 22)
+        ProveedoresToolStripMenuItem.Size = New Size(139, 22)
         ProveedoresToolStripMenuItem.Text = "Proveedores"
         ' 
         ' UsuariosToolStripMenuItem
@@ -118,8 +120,16 @@ Partial Class frmPrincipal
         UsuariosToolStripMenuItem.BackColor = Color.LightCoral
         UsuariosToolStripMenuItem.Image = CType(resources.GetObject("UsuariosToolStripMenuItem.Image"), Image)
         UsuariosToolStripMenuItem.Name = "UsuariosToolStripMenuItem"
-        UsuariosToolStripMenuItem.Size = New Size(180, 22)
+        UsuariosToolStripMenuItem.Size = New Size(139, 22)
         UsuariosToolStripMenuItem.Text = "Usuarios"
+        ' 
+        ' ConsumosStripMenuItem
+        ' 
+        ConsumosStripMenuItem.BackColor = Color.LightCoral
+        ConsumosStripMenuItem.Image = CType(resources.GetObject("ConsumosStripMenuItem.Image"), Image)
+        ConsumosStripMenuItem.Name = "ConsumosStripMenuItem"
+        ConsumosStripMenuItem.Size = New Size(139, 22)
+        ConsumosStripMenuItem.Text = "Consumos"
         ' 
         ' btnOrdenes
         ' 
@@ -240,6 +250,11 @@ Partial Class frmPrincipal
         lblUsuario.TabIndex = 6
         lblUsuario.Text = "Label2"
         ' 
+        ' ToolStripSeparator1
+        ' 
+        ToolStripSeparator1.Name = "ToolStripSeparator1"
+        ToolStripSeparator1.Size = New Size(136, 6)
+        ' 
         ' frmPrincipal
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -286,5 +301,7 @@ Partial Class frmPrincipal
     Friend WithEvents IngredientesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ProveedoresToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents UsuariosToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ConsumosStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
 
 End Class

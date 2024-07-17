@@ -154,4 +154,13 @@ Public Class frmPrincipal
             MsgBox.Error(ex)
         End Try
     End Sub
+
+    Private Sub ConsumosStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConsumosStripMenuItem.Click
+        Try
+            Dim frm As New frmConversion()
+            frm.Show()
+        Catch ex As Exception
+            MsgBox.Error(ex)
+        End Try
+    End Sub
 End Class

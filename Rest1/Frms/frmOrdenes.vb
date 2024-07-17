@@ -27,6 +27,7 @@ Public Class frmOrdenes
             End If
 
             limpiarVariables()
+            validarDetallesOrden()
             crearOrden()
             crearFactura(pDescuento, pUser)
             crearDetallesOrden(True)
@@ -159,6 +160,20 @@ Public Class frmOrdenes
         End Try
     End Sub
 
+    Private Sub validarDetallesOrden()
+        Try
+            Dim idDetalles As New List(Of Integer)
+
+            For Each item As ListViewItem In lstPedido.Items
+                idDetalles.Add(item.SubItems(0).Text)
+            Next
+
+            objNegocios.validaDisponibilidad(idDetalles)
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+
     Private Sub crearDetallesOrden(cancelado As Boolean)
         Try
             Dim vDetalles As New List(Of DetalleOrden)()
@@ -237,6 +252,7 @@ Public Class frmOrdenes
         Try
             If validar() Then
                 limpiarVariables()
+                validarDetallesOrden()
                 crearOrden()
                 crearDetallesOrden(False)
                 LimpiarPantalla()

@@ -50,7 +50,7 @@ Public Class Productos
     Public Sub Modificar(producto As Producto)
         Try
             Dim collection As IMongoCollection(Of BsonDocument) = objDB.GetCollection
-            Dim filter As FilterDefinition(Of BsonDocument) = Builders(Of BsonDocument).Filter.Eq(Of String)("id_producto", producto.IdProducto)
+            Dim filter As FilterDefinition(Of BsonDocument) = Builders(Of BsonDocument).Filter.Eq(Of Integer)("id_producto", producto.IdProducto)
 
             Dim document As New BsonDocument()
             document.Add("id_producto", producto.IdProducto)
@@ -70,7 +70,7 @@ Public Class Productos
     Public Sub Eliminar(pId As Integer)
         Try
             Dim collection As IMongoCollection(Of BsonDocument) = objDB.GetCollection
-            Dim filter As FilterDefinition(Of BsonDocument) = Builders(Of BsonDocument).Filter.Eq(Of String)("id_producto", pId)
+            Dim filter As FilterDefinition(Of BsonDocument) = Builders(Of BsonDocument).Filter.Eq(Of Integer)("id_producto", pId)
 
             collection.DeleteOne(filter)
         Catch ex As Exception

@@ -46,9 +46,9 @@ Public Class Utilitarios
         Return aux
     End Function
 
-    Public Function validaTxtFloat(pTxt As TextBox) As Boolean
+    Public Function validaTxtDecimal(pTxt As TextBox) As Boolean
         Try
-            Dim i As Single = Single.Parse(pTxt.Text, CultureInfo.InvariantCulture)
+            Dim i As Decimal = Decimal.Parse(pTxt.Text.Trim)
         Catch ex As FormatException
             Return False
         End Try
