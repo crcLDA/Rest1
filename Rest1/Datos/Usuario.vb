@@ -1,6 +1,4 @@
-﻿Imports com.sun.org.glassfish.gmbal
-
-Public Class Usuario
+﻿Public Class Usuario
     Public Sub New()
     End Sub
 
@@ -39,4 +37,8 @@ Public Class Usuario
             _rol = value
         End Set
     End Property
+
+    Public Function Info() As String
+        Return "Usuario: " & _usuario & vbCr & "Contraseña: " & _contrasena & vbCr & "Rol: " & _rol
+    End Function
 End Class

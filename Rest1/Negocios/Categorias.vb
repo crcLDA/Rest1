@@ -124,4 +124,34 @@ Public Class Categorias
             Throw ex
         End Try
     End Sub
+
+    Public Sub cargarListView(pLST As ListView)
+        Try
+            pLST.Clear()
+            cargarColumnas(pLST)
+
+            Dim lista As List(Of Categoria) = getCategorias()
+
+            For Each categoria As Categoria In lista
+                Dim item As New ListViewItem(categoria.IdCategoria)
+                item.SubItems.Add(categoria.Descripcion)
+                pLST.Items.Add(item)
+            Next
+
+        Catch ex As Exception
+            Throw ex
+        End Try
+
+    End Sub
+
+    Private Sub cargarColumnas(pLST As ListView)
+        Try
+            pLST.Columns.AddRange(New ColumnHeader() {
+                New ColumnHeader() With {.Text = "Id", .Width = 150},
+                New ColumnHeader() With {.Text = "Nombre", .Width = 663}
+            })
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
 End Class
