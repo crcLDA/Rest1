@@ -32,7 +32,9 @@ Partial Class frmPrincipal
         IngredientesToolStripMenuItem = New ToolStripMenuItem()
         ProveedoresToolStripMenuItem = New ToolStripMenuItem()
         UsuariosToolStripMenuItem = New ToolStripMenuItem()
+        ToolStripSeparator1 = New ToolStripSeparator()
         ConsumosStripMenuItem = New ToolStripMenuItem()
+        ProveeduriaToolStripMenuItem = New ToolStripMenuItem()
         btnOrdenes = New Button()
         Panel1 = New Panel()
         Panel2 = New Panel()
@@ -43,14 +45,14 @@ Partial Class frmPrincipal
         btnHistorial = New Button()
         btnFacturar = New Button()
         lblUsuario = New Label()
-        ToolStripSeparator1 = New ToolStripSeparator()
+        ProveeduríaToolStripMenuItem = New ToolStripMenuItem()
         MenuStrip1.SuspendLayout()
         Panel2.SuspendLayout()
         SuspendLayout()
         ' 
         ' MenuStrip1
         ' 
-        MenuStrip1.Items.AddRange(New ToolStripItem() {AgregarClienteToolStripMenuItem, MantenimientoToolStripMenuItem})
+        MenuStrip1.Items.AddRange(New ToolStripItem() {AgregarClienteToolStripMenuItem, MantenimientoToolStripMenuItem, ProveeduríaToolStripMenuItem})
         MenuStrip1.Location = New Point(0, 0)
         MenuStrip1.Name = "MenuStrip1"
         MenuStrip1.Size = New Size(731, 24)
@@ -69,7 +71,7 @@ Partial Class frmPrincipal
         ' MantenimientoToolStripMenuItem
         ' 
         MantenimientoToolStripMenuItem.BackColor = Color.Orange
-        MantenimientoToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {ProductosToolStripMenuItem, ClientesToolStripMenuItem, CategoriasToolStripMenuItem, IngredientesToolStripMenuItem, ProveedoresToolStripMenuItem, UsuariosToolStripMenuItem, ToolStripSeparator1, ConsumosStripMenuItem})
+        MantenimientoToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {ProductosToolStripMenuItem, ClientesToolStripMenuItem, CategoriasToolStripMenuItem, IngredientesToolStripMenuItem, ProveedoresToolStripMenuItem, UsuariosToolStripMenuItem, ToolStripSeparator1, ConsumosStripMenuItem, ProveeduriaToolStripMenuItem})
         MantenimientoToolStripMenuItem.Image = CType(resources.GetObject("MantenimientoToolStripMenuItem.Image"), Image)
         MantenimientoToolStripMenuItem.Name = "MantenimientoToolStripMenuItem"
         MantenimientoToolStripMenuItem.Size = New Size(117, 20)
@@ -123,6 +125,11 @@ Partial Class frmPrincipal
         UsuariosToolStripMenuItem.Size = New Size(139, 22)
         UsuariosToolStripMenuItem.Text = "Usuarios"
         ' 
+        ' ToolStripSeparator1
+        ' 
+        ToolStripSeparator1.Name = "ToolStripSeparator1"
+        ToolStripSeparator1.Size = New Size(136, 6)
+        ' 
         ' ConsumosStripMenuItem
         ' 
         ConsumosStripMenuItem.BackColor = Color.LightCoral
@@ -130,6 +137,14 @@ Partial Class frmPrincipal
         ConsumosStripMenuItem.Name = "ConsumosStripMenuItem"
         ConsumosStripMenuItem.Size = New Size(139, 22)
         ConsumosStripMenuItem.Text = "Consumos"
+        ' 
+        ' ProveeduriaToolStripMenuItem
+        ' 
+        ProveeduriaToolStripMenuItem.BackColor = Color.LightCoral
+        ProveeduriaToolStripMenuItem.Image = CType(resources.GetObject("ProveeduriaToolStripMenuItem.Image"), Image)
+        ProveeduriaToolStripMenuItem.Name = "ProveeduriaToolStripMenuItem"
+        ProveeduriaToolStripMenuItem.Size = New Size(139, 22)
+        ProveeduriaToolStripMenuItem.Text = "Proveeduría"
         ' 
         ' btnOrdenes
         ' 
@@ -250,10 +265,12 @@ Partial Class frmPrincipal
         lblUsuario.TabIndex = 6
         lblUsuario.Text = "Label2"
         ' 
-        ' ToolStripSeparator1
+        ' ProveeduríaToolStripMenuItem
         ' 
-        ToolStripSeparator1.Name = "ToolStripSeparator1"
-        ToolStripSeparator1.Size = New Size(136, 6)
+        ProveeduríaToolStripMenuItem.BackColor = Color.PaleGreen
+        ProveeduríaToolStripMenuItem.Name = "ProveeduríaToolStripMenuItem"
+        ProveeduríaToolStripMenuItem.Size = New Size(82, 20)
+        ProveeduríaToolStripMenuItem.Text = "Proveeduría"
         ' 
         ' frmPrincipal
         ' 
@@ -303,5 +320,7 @@ Partial Class frmPrincipal
     Friend WithEvents UsuariosToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ConsumosStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
+    Friend WithEvents ProveeduriaToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ProveeduríaToolStripMenuItem As ToolStripMenuItem
 
 End Class

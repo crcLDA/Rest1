@@ -1,9 +1,8 @@
 ﻿Imports System.ComponentModel
-Imports javax.transaction.xa
-Imports Mysqlx.Crud
 
 Public Class frmOrdenes
     Private objUtil As Utilitarios
+    Private objProductos As Productos
     Private objNegocios As ProductoOrdenes
     Private listadoProductos As List(Of Producto)
     Private objTiquete As Tiquete
@@ -68,7 +67,7 @@ Public Class frmOrdenes
     Private Sub cargarListado()
         Try
             lstProductos.Clear()
-            listadoProductos = objNegocios.cargarLstProductos
+            listadoProductos = objProductos.getProductosActivos
             If listadoProductos.Count > 0 Then
                 lstProductos.Columns.AddRange(New ColumnHeader() {
                     New ColumnHeader() With {.Text = "ID", .Width = 40},
@@ -205,6 +204,7 @@ Public Class frmOrdenes
             vCedulaCliente = ""
             objUtil = New Utilitarios
             objNegocios = New ProductoOrdenes
+            objProductos = New Productos
             objTiquete = New Tiquete
             cargar()
         Catch ex As Exception

@@ -124,7 +124,6 @@ Public Class Conversiones
         Try
             Dim vLista As New List(Of Conversion)()
             Dim conversionCollection As IMongoCollection(Of BsonDocument) = objDB.GetCollection()
-            Dim productosCollection As IMongoCollection(Of BsonDocument) = objDB.GetCollection("Productos")
 
             Dim filter As FilterDefinition(Of BsonDocument) = Builders(Of BsonDocument).Filter.Eq(Of Integer)("id_producto", productoId)
             Dim documents As List(Of BsonDocument) = conversionCollection.Find(filter).ToList()

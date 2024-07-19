@@ -63,32 +63,6 @@ Public Class ProductoOrdenes
         End Try
     End Function
 
-    Public Function cargarLstProductos() As List(Of Producto)
-        Try
-            Dim vLista As New List(Of Producto)()
-            Dim collection As IMongoCollection(Of BsonDocument) = objDB.GetCollection("Productos")
-            Dim filter As FilterDefinition(Of BsonDocument) = Builders(Of BsonDocument).Filter.Eq(Of Boolean)("activo", True)
-            Dim documents As List(Of BsonDocument) = collection.Find(filter).ToList()
-
-            For Each doc As BsonDocument In documents
-                Dim producto As New Producto(
-                    doc("id_producto").AsInt32,
-                    doc("nombre").AsString,
-                    doc("descripcion").AsString,
-                    doc("precio").AsDecimal,
-                    doc("id_categoria").AsInt32,
-                    doc("activo").AsBoolean
-                )
-                vLista.Add(producto)
-            Next
-
-            Return vLista
-        Catch ex As Exception
-            Throw ex
-        End Try
-    End Function
-
-
     Public Function agregarOrden(pOrden As Orden)
         Try
             Dim vId As Integer = getNextOrdenID()

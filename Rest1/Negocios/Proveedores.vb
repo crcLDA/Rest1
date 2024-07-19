@@ -137,8 +137,8 @@ Public Class Proveedores
         Catch ex As Exception
             Throw ex
         End Try
-
     End Sub
+
     Private Sub cargarColumnas(pLST As ListView)
         Try
             pLST.Columns.AddRange(New ColumnHeader() {
@@ -147,6 +147,24 @@ Public Class Proveedores
                 New ColumnHeader() With {.Text = "Teléfono", .Width = 100},
                 New ColumnHeader() With {.Text = "Dirección", .Width = 400}
             })
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+
+    Public Sub cargarLstNombres(pLST As ListView)
+        Try
+            pLST.Clear()
+            cargarColumnas(pLST)
+
+            Dim lista As List(Of Proveedor) = getProveedores()
+
+            For Each proveedor As Proveedor In lista
+                Dim item As New ListViewItem(proveedor.IdProveedor)
+                item.SubItems.Add(proveedor.Nombre)
+                pLST.Items.Add(item)
+            Next
+
         Catch ex As Exception
             Throw ex
         End Try

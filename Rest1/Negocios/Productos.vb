@@ -153,6 +153,31 @@ Public Class Productos
         End Try
     End Function
 
+    Public Function getProductosActivos() As List(Of Producto)
+        Try
+            Dim vLista As New List(Of Producto)()
+            Dim collection As IMongoCollection(Of BsonDocument) = objDB.GetCollection()
+            Dim filter As FilterDefinition(Of BsonDocument) = Builders(Of BsonDocument).Filter.Eq(Of Boolean)("activo", True)
+            Dim documents As List(Of BsonDocument) = collection.Find(filter).ToList()
+
+            For Each doc As BsonDocument In documents
+                Dim producto As New Producto(
+                    doc("id_producto").AsInt32,
+                    doc("nombre").AsString,
+                    doc("descripcion").AsString,
+                    doc("precio").AsDecimal,
+                    doc("id_categoria").AsInt32,
+                    doc("activo").AsBoolean
+                )
+                vLista.Add(producto)
+            Next
+
+            Return vLista
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Function
+
     Private Sub cargarColumnas(pLST As ListView)
         Try
             pLST.Columns.AddRange(New ColumnHeader() {

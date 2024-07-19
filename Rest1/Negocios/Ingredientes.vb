@@ -119,7 +119,7 @@ Public Class Ingredientes
         Try
             pCBO.Items.Clear()
 
-            Dim lista As List(Of Ingrediente) = getIngredientes()
+            Dim lista As List(Of Ingrediente) = getIngredientes().OrderBy(Function(ing) ing.Nombre).ToList()
 
             pCBO.DataSource = lista
             pCBO.DisplayMember = "Nombre"

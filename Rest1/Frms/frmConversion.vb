@@ -1,7 +1,7 @@
 ﻿Public Class frmConversion
     Private objUtil As Utilitarios
     Private objConversiones As Conversiones
-    Private objProdOrdenes As ProductoOrdenes
+    Private objProductos As Productos
     Private objIngredientes As Ingredientes
     Private listadoProductos As List(Of Producto)
     Private idProducto As Integer
@@ -41,6 +41,7 @@
 
     Private Sub cargar()
         Try
+            listadoProductos = objProductos.getProductosActivos
             cargarListadoProductos()
             objIngredientes.cargarCBO(Me.cboInsumo)
         Catch ex As Exception
@@ -51,7 +52,7 @@
     Private Sub cargarListadoProductos()
         Try
             lstProductos.Clear()
-            listadoProductos = objProdOrdenes.cargarLstProductos
+
             If listadoProductos.Count > 0 Then
                 lstProductos.Columns.AddRange(New ColumnHeader() {
                     New ColumnHeader() With {.Text = "ID", .Width = 40},
@@ -113,7 +114,7 @@
         Try
             objUtil = New Utilitarios
             objConversiones = New Conversiones
-            objProdOrdenes = New ProductoOrdenes
+            objProductos = New Productos
             objIngredientes = New Ingredientes
             cargar()
         Catch ex As Exception

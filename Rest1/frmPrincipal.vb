@@ -163,4 +163,22 @@ Public Class frmPrincipal
             MsgBox.Error(ex)
         End Try
     End Sub
+
+    Private Sub ProveeduriaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProveeduriaToolStripMenuItem.Click
+        Try
+            Dim frm As New frmProveeduria()
+            frm.Show()
+        Catch ex As Exception
+            MsgBox.Error(ex)
+        End Try
+    End Sub
+
+    Private Sub ProveeduríaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProveeduríaToolStripMenuItem.Click
+        Try
+            Dim frm As New frmVerProvedores
+            frm.ShowDialog()
+        Catch ex As Exception
+            MsgBox.Error(ex)
+        End Try
+    End Sub
 End Class
