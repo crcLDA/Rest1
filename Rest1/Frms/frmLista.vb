@@ -60,6 +60,9 @@ Public Class frmLista
                     Case "Usuarios"
                         Dim frm As New frmUsuario
                         frm.ShowDialog()
+                    Case "Promociones"
+                        Dim frm As New frmUsuario
+                        frm.ShowDialog()
                 End Select
                 cargarLista()
             End If
@@ -188,6 +191,7 @@ Public Class frmLista
             objCategorias = New Categorias
             objProveedores = New Proveedores
             objUsuarios = New Usuarios
+
             cargarLista()
         Catch ex As Exception
             MsgBox.Error(ex)

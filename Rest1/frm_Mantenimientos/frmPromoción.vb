@@ -3,12 +3,11 @@
 Public Class frmUsuario
     Public pID As String
     Private objUtil As Utilitarios
-    Private objNegocios As Promocion
-
+    Private objNegocios As Usuarios
 
     Private Function validar() As Boolean
         Try
-            If Not objUtil.validaTxtLleno(txtPromocion) Then
+            If Not objUtil.validaTxtLleno(txtUsuario) Then
                 Throw New Exception("Ingrese un usuario")
             End If
 
@@ -44,7 +43,7 @@ Public Class frmUsuario
         End Try
     End Sub
 
-    Private Sub frmPromoción_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub frmUsuario_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
             objUtil = New Utilitarios
             objNegocios = New Usuarios
